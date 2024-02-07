@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form id="todoForm">
+        <input type="text" class="field" id="name" placeholder="Name"/>
+        <select>
+            <option>Priority</option>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+        </select>
+        <input type="submit"/>
+    </form>
+
+<div class="container">
+<table class="view">
+    <thead>
+        <tr>
+            <th>S No</th>
+            <th>To DO</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody id="tbody">
+
+    </tbody>
+</table>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

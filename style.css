@@ -1,0 +1,25 @@
+#todoForm{
+    width: 100%;
+    padding: 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    text-align: center;
+    background-image: linear-gradient(midnightblue, teal);
+}
+
+.view{
+    margin-top: 150px;
+    margin-left: 200px;
+    width: 80%;
+    border-collapse: collapse;
+}
+
+.view th,td{
+    border: 1px solid black;
+    padding: 10px 20px;
+  }
+
+  th {
+    text-align: center;
+  }
