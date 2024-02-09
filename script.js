@@ -63,18 +63,16 @@ function showToDOData(data){
 
         let td4=document.createElement('td')
         let statusBtn = document.createElement("button")
-        statusBtn.innerHTML = ele.status ? "Task Completed" : "Task Incomplete"
-        statusBtn.style.backgroundColor = ele.status ? "green" : "red";
+        cssStatus(statusBtn,ele.status);
         statusBtn.addEventListener('click', function(){
             ele.status ? ele.status = false : ele.status = true
-            statusBtn.innerHTML = ele.status ? "Task Completed" : "Task Incomplete"
-            statusBtn.style.backgroundColor = ele.status ? "green" : "red";
+            cssStatus(statusBtn,ele.status);
         })
         td4.append(statusBtn)
 
         let td5=document.createElement('td')
         let delBtn = document.createElement("button")
-        delBtn.innerHTML="Delete"
+        cssDelete(delBtn)
 
         delBtn.addEventListener('click', function() {
             //Anyone of the below function can be use to delete the data from the table
@@ -103,6 +101,26 @@ function handleDelete(i,tr){
     data.splice(i, 1);  //For deleting data from 'data' array
     tr.remove() //for removing row from HTML
     saveData()
+}
+
+//function for updating the CSS of status button
+function cssStatus(statusBtn,status){
+    statusBtn.style.padding= "10px 20px"
+    statusBtn.style.border= "none"
+    statusBtn.style.borderRadius="5px"
+    statusBtn.style.cursor= "pointer"
+    statusBtn.innerHTML = status ? "Task Completed" : "Task Incomplete"
+    statusBtn.style.backgroundColor = status ? "#379124" : "#c43945";
+}
+
+//CSS of Delete Button
+function cssDelete(delBtn){
+    delBtn.innerHTML="Delete"
+    delBtn.style.padding= "10px 20px"
+    delBtn.style.backgroundColor= "#784491"
+    delBtn.style.border= "none"
+    delBtn.style.borderRadius="5px"
+    delBtn.style.cursor= "pointer"
 }
 
 loadData()
