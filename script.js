@@ -54,14 +54,22 @@ function showToDOData(data){
 
         let td1=document.createElement('td')
         td1.innerHTML=i+1
+        td1.style.width="40px"
+        td1.style.textAlign="center"
 
         let td2=document.createElement('td')
         td2.innerHTML=ele.todoName
 
         let td3=document.createElement('td')
         td3.innerHTML=ele.priority
+        td3.style.width="40px"
+        td3.style.textAlign="center"
+        prioColor(ele.priority, td3)
+        
 
         let td4=document.createElement('td')
+        td4.style.width="150px"
+        td4.style.textAlign="center"
         let statusBtn = document.createElement("button")
         cssStatus(statusBtn,ele.status);
         statusBtn.addEventListener('click', function(){
@@ -71,6 +79,8 @@ function showToDOData(data){
         td4.append(statusBtn)
 
         let td5=document.createElement('td')
+        td5.style.width="100px"
+        td5.style.textAlign="center"
         let delBtn = document.createElement("button")
         cssDelete(delBtn)
 
@@ -123,4 +133,16 @@ function cssDelete(delBtn){
     delBtn.style.cursor= "pointer"
 }
 
+//Function to update text color of Priority based on color
+function prioColor(prio, td3){
+    if(prio == "High"){
+        td3.style.color="red"
+    }
+    if(prio == "Medium"){
+        td3.style.color="#c4bb3d"
+    }
+    if(prio == "Low"){
+        td3.style.color="green"
+    }
+}
 loadData()

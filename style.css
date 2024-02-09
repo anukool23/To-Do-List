@@ -8,11 +8,12 @@ body {
 
 /* Form */
 #todoForm {
+    width: 90%;
     margin: 20px;
 }
 
 .field {
-    width: 500px;
+    width: 70%;
     padding: 10px;
     margin-right: 10px;
     border: 1px solid #ccc;
