@@ -5,7 +5,8 @@ let data=[];
 
 //Adding event listener to collect the form data on the click of submit
 form.addEventListener('submit', function(event){
-    htmlData(event)
+    htmlData(event) 
+    form.reset()   // Reseting form after collectiong data
 })
 
 // Function to read form data and store it in array
@@ -62,7 +63,8 @@ function showToDOData(data){
         let delBtn = document.createElement("button")
         delBtn.innerHTML="Delete"
         delBtn.addEventListener('click', function(){
-            
+            data.splice(i, 1);  //For deleting data from 'data' array
+            tr.remove() //for removing row from HTML
         })
         td5.append(delBtn)
 
