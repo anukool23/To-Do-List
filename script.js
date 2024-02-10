@@ -26,6 +26,10 @@ form.addEventListener('submit', function(event){
 function htmlData(event){
     event.preventDefault()
     let todo = event.target[0].value  //For storing todo from form
+    if(todo.charAt(0) === ' '){ //Blocking spaces at the beginning of String
+        alert("Spaces at the beginning are not allowed!");
+    }
+    else{
     let prio = event.target[1].value    //for storing priority from the form
         let obj={
             id : generateRandon(),
@@ -36,7 +40,7 @@ function htmlData(event){
         data.push(obj)
         saveData()
         showToDOData(data)
-}
+}}
 
 //Function to  generate random number between 1 to 99 to store it in ID 
 function generateRandon(){
