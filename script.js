@@ -27,12 +27,13 @@ function htmlData(event){
     event.preventDefault()
     let todo = event.target[0].value  //For storing todo from form
     if(todo.charAt(0) === ' '){ //Blocking spaces at the beginning of String
-        alert("Spaces at the beginning are not allowed!");
+        alert("Spaces are not allowed at the beginning in To Do!");
     }
     else{
     let prio = event.target[1].value    //for storing priority from the form
         let obj={
             id : generateRandon(),
+            createdAt : getCurrentTime(),
             todoName : todo,
             priority : prio,
             status : false
@@ -61,6 +62,11 @@ function showToDOData(data){
         td1.style.width="40px"
         td1.style.textAlign="center"
 
+        let tdCreated = document.createElement('td')
+        tdCreated.innerHTML=ele.createdAt
+        tdCreated.style.width="100px"
+        tdCreated.style.textAlign='center'
+
         let td2=document.createElement('td')
         td2.innerHTML=ele.todoName
 
@@ -72,7 +78,7 @@ function showToDOData(data){
         
 
         let td4=document.createElement('td')
-        td4.style.width="150px"
+        td4.style.width="100px"
         td4.style.textAlign="center"
         let statusBtn = document.createElement("button")
         cssStatus(statusBtn,ele.status);
@@ -95,7 +101,7 @@ function showToDOData(data){
         })
         td5.append(delBtn)
 
-        tr.append(td1 , td2 , td3, td4, td5 )
+        tr.append(td1 , td2 ,tdCreated, td3, td4, td5 )
        tbody.append(tr)
     })
 }
@@ -150,3 +156,28 @@ function prioColor(prio, td3){
     }
 }
 loadData()
+
+//Putting data and time of creation of task
+function getCurrentTime(){
+    var now = new Date();
+
+  var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+  var dayOfWeek = days[now.getDay()];
+  var month = months[now.getMonth()];
+  var day = now.getDate();
+  var year = now.getFullYear();
+
+  var hours = now.getHours();
+  var minutes = now.getMinutes().toString().padStart(2, '0');
+  var ampm = hours >= 12 ? 'PM' : 'AM';
+  hours = hours % 12;
+  hours = hours ? hours : 12; // Convert midnight (0) to 12
+
+  var formattedDateTime = dayOfWeek+ '  ' + hours + ':' + minutes + ':' + ampm + '  ' + month + ' ' + day + ', ' + year ;
+
+  return formattedDateTime;
+      }
+      
+      
