@@ -83,9 +83,12 @@ function showToDOData(data){
         let statusBtn = document.createElement("button")
         cssStatus(statusBtn,ele.status);
         statusBtn.addEventListener('click', function(){
+            //handleupdate(ele, ele.id)
             ele.status ? ele.status = false : ele.status = true
-            cssStatus(statusBtn,ele.status);
+            saveData()
+            showToDOData(data)
         })
+        cssStatus(statusBtn,ele.status);
         td4.append(statusBtn)
 
         let td5=document.createElement('td')
@@ -116,6 +119,13 @@ function handleDel(id){
     showToDOData(data)  //For updating the To Do table
 }
 
+
+function handleupdate(ele, id){
+    ele.status = true
+    saveData()
+    showToDOData(data)  //For updating the To Do table
+}
+
 //Function for deleting data using splice HOF
 function handleDelete(i,tr){
     data.splice(i, 1);  //For deleting data from 'data' array
@@ -129,7 +139,7 @@ function cssStatus(statusBtn,status){
     statusBtn.style.border= "none"
     statusBtn.style.borderRadius="5px"
     statusBtn.style.cursor= "pointer"
-    statusBtn.innerHTML = status ? "Task Completed" : "Task Incomplete"
+    statusBtn.innerHTML = status ? "Completed" : "Incomplete"
     statusBtn.style.backgroundColor = status ? "#379124" : "#c43945";
 }
 
